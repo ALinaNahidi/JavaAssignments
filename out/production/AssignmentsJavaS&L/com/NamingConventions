@@ -1,0 +1,31 @@
+Naming Conventions :
+
+Classes and Interfaces :
+First letter should be capital Camel case
+
+Methods :
+First letter lowercase camel case
+
+Variables :
+Should not start with underscore(‘_’) or dollar sign ‘$’ characters.
+Single character variable names should be avoided
+
+Constant variables :
+Should be all uppercase with words separated by underscores (“_”).
+public static final float POSITIVE_INFINITY = 1.0f / 0.0f;
+
+Packages :
+All-lowercase : com.assignmentnamingconventions
+
+Enumeration :
+names should be all uppercase letters.
+
+Example :
+
+class StringBuilderExample{
+    public static void main(String args[]){
+        StringBuilder stringBuilder=new StringBuilder("Hello, ");
+        stringBuilder.append("Alina");
+        System.out.println(sb);
+    }
+}
