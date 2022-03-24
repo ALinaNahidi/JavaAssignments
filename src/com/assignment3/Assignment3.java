@@ -1,7 +1,7 @@
 package com.assignment3;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.net.*;
+
 import java.util.Scanner;
 public class Assignment3 {
 
@@ -12,9 +12,9 @@ public class Assignment3 {
             BufferedReader inputStream = new BufferedReader(
                     new InputStreamReader(process.getInputStream()));
 
-            String s = "";
-                while ((s = inputStream.readLine()) != null) {
-                System.out.println(s);
+            String data = "";
+                while ((data = inputStream.readLine()) != null) {
+                System.out.println(data);
                 }
         }
         catch (Exception e) {

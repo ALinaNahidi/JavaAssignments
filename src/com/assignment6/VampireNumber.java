@@ -1,20 +1,16 @@
 package com.assignment6;
 
-import java.util.*;
-
 class VampireNumber {
 
-    private static long[] b;
+    public static void main(String[] args) {
 
-    public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-        int v = 0;
-        long number, i, c = 0;
-        b = new long[100];
+        int vampireNumberCount = 0;
+        long number, noOfDigits = 0;
+        long[] output = new long[100];
         number = 1000;
         int count = 0;
         while (count < 100) {
-            if (getVampire(v, number, c, b)) {
+            if (getVampire(vampireNumberCount, number, noOfDigits, output)) {
                 count += 1;
                 System.out.println(number);
             }
@@ -22,64 +18,63 @@ class VampireNumber {
         }
     }
 
-    private static boolean getVampire(int v, long number, long noOfDigits, long[] b) {
-        long i, j;
+    private static boolean getVampire(int vampireNumberCount, long number, long noOfDigits, long[] output) {
+        long temp1, temp2;
         long new_number;
         long flag;
-        for (i = number; i > 0; i /= 10)
+        for (temp1 = number; temp1 > 0; temp1 /= 10)
             noOfDigits++;
         if (noOfDigits % 2 != 0)
             return false;
 
-        for (i = (int) Math.pow(10, (noOfDigits / 2) - 1); i < (int) Math.pow(10, noOfDigits / 2); i++) {
-            if (number % i == 0) {
-                j = number / i;
-                if (!(j >= Math.pow(10, (noOfDigits / 2) - 1) && j < Math.pow(10, noOfDigits / 2)))
+        for (temp1 = (int) Math.pow(10, (noOfDigits / 2) - 1); temp1 < (int) Math.pow(10, noOfDigits / 2); temp1++) {
+            if (number % temp1 == 0) {
+                temp2 = number / temp1;
+                if (!(temp2 >= Math.pow(10, (noOfDigits / 2) - 1) && temp2 < Math.pow(10, noOfDigits / 2)))
                     continue;
 
 
-                new_number = i * (int) Math.pow(10, noOfDigits / 2) + j;
+                new_number = temp1 * (int) Math.pow(10, noOfDigits / 2) + temp2;
 
-                if (i % 10 == 0 && j % 10 == 0) {
+                if (temp1 % 10 == 0 && temp2 % 10 == 0) {
                     flag = 1;
                     break;
                 } else {
                     flag = CheckVampireConditions(number, new_number);
                     if (flag == 0)
-                        v = getFactors(v, b, i, j);
+                        vampireNumberCount = getFactors(vampireNumberCount, output, temp1, temp2);
                 }
             }
         }
 
 
-        if (v == 0)
+        if (vampireNumberCount == 0)
             return false;
         else {
             System.out.print("The factors of vampire " + number + " are: ");
-            for (int ii = 0; ii < v; ii++)
-                System.out.println(b[ii] + "\t" + (number / b[ii]));
+            for (int index = 0; index < vampireNumberCount; index++)
+                System.out.println(output[index] + "\t" + (number / output[index]));
             return true;
         }
     }
 
     private static long CheckVampireConditions(long number, long new_number) {
-        long k;
-        long c1, c2;
+        long temp1,temp2;
+        long count1, count2;
         long flag;
-        long p;
 
         flag = 0;
-        for (k = number; k > 0; k /= 10) {
-            c1 = c2 = 0;
-            for (p = number; p > 0; p /= 10) {
-                if (k % 10 == p % 10)
-                    c1++;
+        for (temp1 = number; temp1 > 0; temp1 /= 10) {
+            count1 = count2 = 0;
+            for (temp2 = number; temp2 > 0; temp2 /= 10) {
+                if (temp1 % 10 == temp2 % 10)
+                    count1++;
             }
-            for (p = new_number; p > 0; p /= 10) {
-                if (k % 10 == p % 10)
-                    c2++;
+            for (temp2 = new_number; temp2 > 0; temp2 /= 10) {
+                if (temp1 % 10 == temp2 % 10)
+                    count2++;
             }
-            if (c1 != c2) {
+            if (count1 != count2) {
                 flag = 1;
                 break;
             }
@@ -87,13 +82,15 @@ class VampireNumber {
         return flag;
     }
 
-    private static int getFactors(int v, long[] b, long i, long j) {
+    private static int getFactors(int vampireIndex, long[] output, long i, long j) {
         int flag = 0;
-        for (int index = 0; index < v; index++)
-            if (b[index] == i || b[index] == j)
+        for (int index = 0; index < vampireIndex; index++)
+            if (output[index] == i || output[index] == j) {
                 flag = 1;
+                break;
+            }
         if (flag == 0)
-            b[v++] = i;
-        return v;
+            output[vampireIndex++] = i;
+        return vampireIndex;
     }
 }

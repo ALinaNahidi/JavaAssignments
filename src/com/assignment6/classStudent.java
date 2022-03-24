@@ -2,7 +2,6 @@ package com.assignment6;
 
 public class classStudent {
     private String name;
-
     private int age;
 
     public classStudent(String name) {

@@ -19,9 +19,9 @@ public class Assignment11Map {
 
         try {
 
-            PrintWriter pw = new PrintWriter("new_file");
-            pw.println(mappedOutput);
-            pw.close();
+            PrintWriter printWriter = new PrintWriter("new_file");
+            printWriter.println(mappedOutput);
+            printWriter.close();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

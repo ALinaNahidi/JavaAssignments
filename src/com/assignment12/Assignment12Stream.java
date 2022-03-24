@@ -31,13 +31,13 @@ public class Assignment12Stream {
                 .distinct()
                 .forEach(System.out::println);
 
-        seperationLine();
+        separationLine();
 
         studentList.stream()
                 .filter(obj -> obj.getYearOfEnrollment() > 2018)
                 .forEach(obj -> System.out.println(obj.getName()));
 
-        seperationLine();
+        separationLine();
 
         studentList.stream()
                 .filter(obj -> obj.getGender().equalsIgnoreCase("male") && obj.getEngDepartment()
@@ -45,14 +45,14 @@ public class Assignment12Stream {
                 .forEach(System.out::println);
 
 
-        seperationLine();
+        separationLine();
 
         var maleFemaleCount = studentList.stream()
                 .collect(Collectors.groupingBy(Student::getGender, Collectors.counting()));
 
         System.out.println(maleFemaleCount);
 
-        seperationLine();
+        separationLine();
 
 //        var averageAgeSummary = studentList.stream()
 //                .mapToInt(Student::getAge)
@@ -65,7 +65,7 @@ public class Assignment12Stream {
         System.out.println(averageAgeSummary);
 
 
-        seperationLine();
+        separationLine();
 
         var maxPercentage = studentList.stream()
                 .max(Comparator.comparing(Student::getPerTillDate));
@@ -79,7 +79,7 @@ public class Assignment12Stream {
         System.out.println(maxPercentage2.getMax());
 
 
-        seperationLine();
+        separationLine();
 
         var studentsCountBasedOnDepartments =
                 studentList.stream()
@@ -87,7 +87,7 @@ public class Assignment12Stream {
 
         System.out.println(studentsCountBasedOnDepartments);
 
-        seperationLine();
+        separationLine();
 
         var averagePercentageOfEachDepartments =
                 studentList.stream()
@@ -96,7 +96,7 @@ public class Assignment12Stream {
 
         System.out.println(averagePercentageOfEachDepartments);
 
-        seperationLine();
+        separationLine();
 
         var youngestElectronicStudent =
                 studentList.stream()
@@ -105,7 +105,7 @@ public class Assignment12Stream {
         System.out.println(youngestElectronicStudent);
 
 
-        seperationLine();
+        separationLine();
 
         var maleFemaleInCS =
                 studentList.stream()
@@ -114,12 +114,12 @@ public class Assignment12Stream {
         System.out.println(maleFemaleInCS);
 
 
-        seperationLine();
+        separationLine();
 
 
     }
 
-    private static void seperationLine() {
+    private static void separationLine() {
         System.out.println("==========================================");
     }
 }

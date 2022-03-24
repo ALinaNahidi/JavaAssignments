@@ -13,10 +13,10 @@ public class InsideDataClass {
     }
 
     public void new_method(){
-        int a;
-        int b;
-//        System.out.println(a);
-//        System.out.println(b);
+        int localVariable1;
+        int localVariable2;
+//        System.out.println(localVariable1);
+//        System.out.println(localVariable2);
 // This part of code will not work because we have to initialize the variables first
     }
 }
