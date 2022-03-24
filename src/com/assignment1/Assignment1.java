@@ -15,12 +15,12 @@ public class Assignment1 {
             System.out.println("ENTER THE NAME OF FILE");
             fileName =scanner.nextLine();
             String[] files = file.list();
-            for (String string : files){
-                Boolean mathchFile = fileName.equals(string);
+            for (String fileVariable : files){
+                Boolean mathchFile = fileName.equals(fileVariable);
                 if (mathchFile){
                     found = true;
                     System.out.println("File Found : ");
-                    System.out.println(string);
+                    System.out.println(fileVariable);
                     System.out.println("Path : "+ file.getAbsolutePath());
                 }
             }
